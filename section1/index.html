@@ -8,12 +8,17 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   </head>
   <body>
-    <a id="google_link">Google</a>
-
     <div id="app">
-        {{message}}
-        <!-- <a v-bind:href="google">Google</a> -->
-        <a :href="google">Google</a>
+      {{message}}
+      <br />
+      <!-- <a v-bind:href="google">Google</a> -->
+      <a :href="google">Google</a>
+      <br />
+      <a :href="book.url">{{book.title}}</a>
+      <br />
+      <input v-bind="{name:formInput.name,placeholder:formInput.placeholder}" />
+      <br />
+      <input v-bind="formInput" /> <!-- 省略形 -->
     </div>
 
     <script>
@@ -23,12 +28,17 @@
           return {
             message: "Hello Vue!!",
             google: "http://www.google.com",
+            book: {
+              title: "本のタイトル",
+              url: "https://www.google.com",
+            },
+            formInput: {
+              name: "your_name",
+              placeholder: "Please enter your name",
+            },
           };
         },
       });
-
-      const googleLink = document.querySelector("#google_link");
-      googleLink.href = "http://www.google.com";
     </script>
   </body>
 </html>
