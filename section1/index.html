@@ -8,7 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   </head>
   <body>
-    <div id="app">{{message}}</div>
+    <a id="google_link">Google</a>
+
+    <div id="app">
+        {{message}}
+        <!-- <a v-bind:href="google">Google</a> -->
+        <a :href="google">Google</a>
+    </div>
 
     <script>
       let app = new Vue({
@@ -16,9 +22,13 @@
         data: function () {
           return {
             message: "Hello Vue!!",
+            google: "http://www.google.com",
           };
         },
       });
+
+      const googleLink = document.querySelector("#google_link");
+      googleLink.href = "http://www.google.com";
     </script>
   </body>
 </html>
