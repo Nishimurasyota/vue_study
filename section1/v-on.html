@@ -8,11 +8,23 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
   </head>
   <body>
-    <button onClick="btnClicked()">click me</button>
+    <button id="clickEvent" onClick="btnClicked()">click me</button>
+
+    <!-- Ajax -->
+    <form>
+      <button id="prevent" type="submit">送信</button>
+    </form>
+    <!-- vueの場合は修飾子で.preventをつけるなどして対応する -->
 
     <div id="app">
       <!-- <button v-on:click="btnClicked">click me</button> -->
-      <button @click="btnClicked">click me</button>
+      <button @click="btnClicked">click me</button><br />
+      //イベントを検出する
+      <button @click="btnClickedEvent">Event click me</button><br />
+      //引数を検出する
+      <button @click="btnClickedArgs(1)">Args click me</button><br />
+      //引数とイベントを検出する
+      <button @click="btnClickedArgsEvent(1,$event)">ArgsEvent click me</button>
     </div>
 
     <script>
@@ -21,16 +33,37 @@
         data() {
           return {};
         },
-        methods:{
-            btnClicked(){
-                console.log("vue clicked")
-            }
-        }
+        methods: {
+          btnClicked() {
+            console.log("vue clicked");
+          },
+          btnClickedEvent(e) {
+            console.log(e);
+          },
+          btnClickedArgs(val) {
+            console.log(val);
+          },
+          btnClickedArgsEvent(val, e) {
+            console.log(val, e);
+          },
+        },
       });
 
       function btnClicked() {
         console.log("click");
       }
+
+      const clickEvent = document.querySelector("#clickEvent");
+      clickEvent.addEventListener("click", (e) => {
+        console.log(e);
+      });
+
+      const prevent = document.querySelector("#prevent");
+      prevent.addEventListener("click", (e) => {
+        e.preventDefault();
+        // preventDefault()で再読み込みの操作を行わないようにしている
+        console.log(e);
+      });
     </script>
   </body>
 </html>
