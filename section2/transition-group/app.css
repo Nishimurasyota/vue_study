@@ -1,0 +1,16 @@
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-enter-active, .list-leave-active {
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.list-enter, .list-leave-to {
+  opacity: 0;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+}
+/*# sourceMappingURL=app.css.map */
