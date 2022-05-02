@@ -9,14 +9,8 @@
   </head>
   <body>
     <div id="app">
-        <div>
-            {{totalPrice}}
-            {{totalPrice}}
-        </div>
-        <div>
-            {{totalPriceMethods()}}
-            {{totalPriceMethods()}}
-        </div>
+      <div>{{totalPrice}} , {{totalPriceMethods()}}</div>
+      <!-- <div>{{totalPriceMethods()}} , {{totalPriceMethods()}}</div> -->
     </div>
 
     <script>
@@ -37,10 +31,12 @@
         computed: {
           // computedはreturnで値を返す必要がある
           //データの変更がないと実行されない
-          totalPrice() {
-            console.log("computed");
-            return this.price * this.number;
-          },
+          //   totalPrice() {
+          //     console.log("computed");
+          //     return this.price * this.number;
+          //   },
+          totalPrice: (app) => app.number * app.price,
+          //   アロー関数の場合はthisがwindowオブジェクトを参照するため、通常とは異なるのでappでインスタンスを指定する
         },
       });
     </script>
