@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      let app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            books: [
+              {
+                id: 1,
+                title: "タイトル1",
+                author: "著者名1",
+                url: "http://www.google.com",
+              },
+              {
+                id: 2,
+                title: "タイトル2",
+                author: "著者名2",
+                url: "http://www.google.com",
+              },
+              {
+                id: 3,
+                title: "タイトル3",
+                author: "著者名3",
+                url: "http://www.google.com",
+              },
+            ],
+          };
+        },
+        watch: {
+          books: {
+            handler() {
+              // watchで該当オブジェクトが変更されたらhandlerが実行される
+              console.log("変更されましたï");
+            },
+            deep: true,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
